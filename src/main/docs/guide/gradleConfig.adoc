@@ -1,0 +1,8 @@
+The first step is to configure the necessary Gradle dependencies. This basically means adding a dependency on the http://plugins.grails.org/plugin/rxjava[RxJava plugin] for Grails in the `build.gradle` file:
+
+[source,groovy]
+----
+include::{sourceDir}/build.gradle[tags=rxjava,indent=0]
+----
+
+RxJava is used to facilitate a reactive programming model for sending events to the JavaScript client.

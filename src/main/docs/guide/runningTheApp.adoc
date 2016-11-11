@@ -1,0 +1,3 @@
+To run the application use the `./gradlew bootRun` command which will start the application on port 8080.
+
+You can then navigate to `http://localhost:8080` and you will see below the "Welcome to Grails!" message the messages "Tick" and "Tock" alternating as the browser receives events from the server.

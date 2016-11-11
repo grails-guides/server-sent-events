@@ -1,0 +1,47 @@
+Now that you have a controller you need to modify it to take advantage of RxJava features. To do this add the necessary imports and make the controller implement the `grails.rx.web.RxController` trait:
+
+[source,groovy]
+.grails-app/controllers/example/TickTockController.groovy
+----
+include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[tags=rxjavaImports,indent=0]
+----
+
+The next step is to implement the `index` action. This is the default action that gets executed by the controller if no explicit action is specified.
+
+The `RxController` trait adds a helper called `rx` that allows you to control the responses sent to the client from the controller.
+
+In order to start sending Server Sent Events we will use the `rx.stream(..)` method:
+
+[source,groovy]
+.grails-app/controllers/example/TickTockController.groovy
+----
+include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[indent=0,lines="13..14,33..34"]
+----
+
+The `stream` method accepts a closure that receives a http://reactivex.io/RxJava/javadoc/rx/Subscriber.html[rx.Subscriber] instance which you can use to send events to the client when the data is ready to be sent via the http://reactivex.io/RxJava/javadoc/rx/Observer.html[rx.Observer] interface.
+
+By using the `rx` helper's various method you can pass values to the Subscriber's http://reactivex.io/RxJava/javadoc/rx/Observer.html#onNext(T)[onNext] method. For example:
+
+[source,groovy]
+.grails-app/controllers/example/TickTockController.groovy
+----
+include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[tags=rxOnNext,indent=0]
+----
+
+In this example we loop through values between 0 and 5 and call `rx.render(..)` for odd and even values in order to output "Tick" or "Tock" respectively. The call to `sleep(..)` is there to simulate a slow request like for example if the values were being obtained from an external web service.
+
+Once you are done sending events you can use the Subscriber's http://reactivex.io/RxJava/javadoc/rx/Observer.html#onCompleted()[onCompleted] event to finish-up:
+
+[source,groovy]
+.grails-app/controllers/example/TickTockController.groovy
+----
+include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[tags=rxOnCompleted,indent=0]
+----
+
+The final completed logic can be seen below:
+
+[source,groovy]
+.grails-app/controllers/example/TickTockController.groovy
+----
+include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[tags=rxStream,indent=0]
+----
