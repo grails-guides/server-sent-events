@@ -11,7 +11,11 @@ if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
     echo "https://$GH_TOKEN:@github.com" > ~/.git-credentials
 
     git clone https://${GH_TOKEN}@github.com/grails/grails-guides.git -b gh-pages gh-pages --single-branch > /dev/null
+    
+    ./gradlew updateGuidesJson
+
     cd gh-pages
+
         
     # If this is the master branch then update the snapshot
     mkdir -p server-sent-events
