@@ -21,7 +21,7 @@ if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
     mkdir -p server-sent-events
     cp -r ../build/docs/. ./server-sent-events/
 
-    git add server-sent-events/*    
+    git add .   
 
     git commit -a -m "Publishing Grails Guide for Travis Build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
     git push origin HEAD
