@@ -1,9 +1,15 @@
 #!/bin/bash
 set -e
 
-./gradlew publishGuide --no-daemon
+export EXIT_STATUS=0
 
-if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
+./gradlew check || EXIT_STATUS=$?
+
+if [[ $EXIT_STATUS -eq 0 ]]; then
+    ./gradlew publishGuide || EXIT_STATUS=$?
+fi
+
+if [[ $EXIT_STATUS -eq 0 && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
     echo "Publishing Documentation"
     git config --global user.name "$GIT_NAME"
     git config --global user.email "$GIT_EMAIL"
