@@ -2,7 +2,11 @@ The first step is to configure the necessary Gradle dependencies. This basically
 
 [source,groovy]
 ----
-include::{sourceDir}/build.gradle[tags=rxjava,indent=0]
+dependencies {
+    ...
+include::{sourceDir}/build.gradle[tags=rxjava]
+}
+
 ----
 
 RxJava is used to facilitate a reactive programming model for sending events to the JavaScript client.
