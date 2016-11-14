@@ -6,5 +6,5 @@ asciidoctorj {
     version = '1.5.4'
 }
 
-apply from:"https://raw.githubusercontent.com/grails/grails-guides/d7c0a9bd96c574e4eea7c7af063fa5ba1f70958e/gradle/guide-build.gradle"
+apply from:"https://raw.githubusercontent.com/grails/grails-guides/f6b1a10d64c05082ca6f36776fd8b4cce2951121/gradle/guide-build.gradle"
 
