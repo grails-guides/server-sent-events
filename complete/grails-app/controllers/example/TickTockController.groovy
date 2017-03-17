@@ -1,8 +1,9 @@
 package example
 
 //tag::rxjavaImports[]
-import rx.Subscriber
+import rx.*
 import grails.rx.web.*
+import java.util.concurrent.TimeUnit
 /**
  * Demo Server Sent Events Controller
  */
@@ -11,7 +12,7 @@ class TickTockController implements RxController {
 
     //tag::rxStream[]
     def index() {
-        rx.stream { Subscriber subscriber ->
+        rx.stream { Observer observer ->
             //tag::rxOnNext[]
             for(i in (0..5)) {
                 if(i % 2 == 0) {
@@ -28,9 +29,26 @@ class TickTockController implements RxController {
             }
             //end::rxOnNext[]
             //tag::rxOnCompleted[]
-            subscriber.onCompleted()
+            observer.onCompleted()
             //end::rxOnCompleted[]
         }
     }
     //end::rxStream[]
+
+    //tag::interval[]
+    def example() {
+        int i = 0
+        rx.stream(Observable
+                    .interval(1, TimeUnit.SECONDS)
+                    .map {
+            i++  
+            if(i % 2 == 0) {
+                rx.render("Tick")
+            }
+            else {
+                rx.render("Tock")
+            }                         
+        })        
+    }
+    //end::interval[]
 }

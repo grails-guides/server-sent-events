@@ -15,12 +15,12 @@ In order to start sending Server Sent Events we will use the `rx.stream(..)` met
 [source,groovy]
 .grails-app/controllers/example/TickTockController.groovy
 ----
-include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[indent=0,lines="13..14,33..34"]
+include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[indent=0,lines="14..15,34..35"]
 ----
 
-The `stream` method accepts a closure that receives a http://reactivex.io/RxJava/javadoc/rx/Subscriber.html[rx.Subscriber] instance which you can use to send events to the client when the data is ready to be sent via the http://reactivex.io/RxJava/javadoc/rx/Observer.html[rx.Observer] interface.
+The `stream` method accepts a closure that receives a http://reactivex.io/RxJava/javadoc/rx/Observer.html[rx.Observer] instance which you can use to send events to the client when the data is ready to be sent via the http://reactivex.io/RxJava/javadoc/rx/Observer.html[rx.Observer] interface.
 
-By using the `rx` helper's various method you can pass values to the Subscriber's http://reactivex.io/RxJava/javadoc/rx/Observer.html#onNext(T)[onNext] method. For example:
+By using the `rx` helper's various method you can pass values to the Observer's http://reactivex.io/RxJava/javadoc/rx/Observer.html#onNext(T)[onNext] method. For example:
 
 [source,groovy]
 .grails-app/controllers/example/TickTockController.groovy
@@ -30,7 +30,7 @@ include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[ta
 
 In this example we loop through values between 0 and 5 and call `rx.render(..)` for odd and even values in order to output "Tick" or "Tock" respectively. The call to `sleep(..)` is there to simulate a slow request like for example if the values were being obtained from an external web service.
 
-Once you are done sending events you can use the Subscriber's http://reactivex.io/RxJava/javadoc/rx/Observer.html#onCompleted()[onCompleted] event to finish-up:
+Once you are done sending events you can use the Observer's http://reactivex.io/RxJava/javadoc/rx/Observer.html#onCompleted()[onCompleted] event to finish-up:
 
 [source,groovy]
 .grails-app/controllers/example/TickTockController.groovy
@@ -44,4 +44,12 @@ The final completed logic can be seen below:
 .grails-app/controllers/example/TickTockController.groovy
 ----
 include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[tags=rxStream,indent=0]
+----
+
+Note that if the call to `sleep(1000)` was actually a concrete requirement for the application a more idiomatic way to write that would be with the `interval` method:
+
+[source,groovy]
+.grails-app/controllers/example/TickTockController.groovy
+----
+include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[tags=interval,indent=0]
 ----
