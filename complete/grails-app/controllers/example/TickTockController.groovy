@@ -20,12 +20,12 @@ class TickTockController implements RxController {
             //tag::rxOnNext[]
             for (i in (0 .. 5)) {
                 if (i % 2 == 0) {
-                    subscriber.onNext(
+                    observer.onNext(
                         rx.render('Tick')
                     )
                 }
                 else {
-                    subscriber.onNext(
+                    observer.onNext(
                         rx.render('Tock')
                     )
                 }
