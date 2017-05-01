@@ -5,16 +5,18 @@ import rx.Observer
 import rx.Observable
 import grails.rx.web.RxController
 import java.util.concurrent.TimeUnit
-
+import groovy.transform.CompileStatic
 /**
  * Demo Server Sent Events Controller
  */
+@CompileStatic
 class TickTockController implements RxController {
 //end::rxjavaImports[]
 
     //tag::rxStream[]
     def index() {
         rx.stream { Observer observer ->
+
             //tag::rxOnNext[]
             for (i in (0 .. 5)) {
                 if (i % 2 == 0) {
