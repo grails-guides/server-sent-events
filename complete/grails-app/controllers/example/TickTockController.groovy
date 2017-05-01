@@ -6,6 +6,7 @@ import rx.Observable
 import grails.rx.web.RxController
 import java.util.concurrent.TimeUnit
 import groovy.transform.CompileStatic
+
 /**
  * Demo Server Sent Events Controller
  */
