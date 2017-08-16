@@ -15,7 +15,7 @@ In order to start sending Server Sent Events we will use the `rx.stream(..)` met
 [source,groovy]
 .grails-app/controllers/example/TickTockController.groovy
 ----
-include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[indent=0,lines="14..15,34..35"]
+include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[indent=0,lines="18..19,39..40"]
 ----
 
 The `stream` method accepts a closure that receives a http://reactivex.io/RxJava/javadoc/rx/Observer.html[rx.Observer] instance which you can use to send events to the client when the data is ready to be sent via the http://reactivex.io/RxJava/javadoc/rx/Observer.html[rx.Observer] interface.
