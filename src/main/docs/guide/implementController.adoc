@@ -20,7 +20,7 @@ include::{sourceDir}/grails-app/controllers/example/TickTockController.groovy[in
 
 The `stream` method accepts a closure that receives a http://reactivex.io/RxJava/javadoc/rx/Observer.html[rx.Observer] instance which you can use to send events to the client when the data is ready to be sent via the http://reactivex.io/RxJava/javadoc/rx/Observer.html[rx.Observer] interface.
 
-By using the `rx` helper's various method you can pass values to the Observer's http://reactivex.io/RxJava/javadoc/rx/Observer.html#onNext(T)[onNext] method. For example:
+By using the `rx` helper's various methods you can pass values to the Observer's http://reactivex.io/RxJava/javadoc/rx/Observer.html#onNext(T)[onNext] method. For example:
 
 [source,groovy]
 .grails-app/controllers/example/TickTockController.groovy
