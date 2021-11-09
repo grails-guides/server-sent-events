@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-        mavenLocal()
         maven { url "https://repo.grails.org/grails/core" }
     }
     dependencies {
@@ -21,7 +20,6 @@ apply plugin:"com.bertramlabs.asset-pipeline"
 apply plugin:"org.grails.grails-gsp"
 
 repositories {
-    mavenLocal()
     maven { url "https://repo.grails.org/grails/core" }
 }
 
@@ -85,4 +83,5 @@ assets {
     minifyJs = true
     minifyCss = true
 }
-tasks.withType(Test) { useJUnitPlatform() }
+
+tasks.withType(Test) { useJUnitPlatform() }
