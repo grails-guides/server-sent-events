@@ -1,3 +1,0 @@
-include::{commondir}/common-runapp.adoc[]
-
-You can then navigate to `http://localhost:8080` and you will see below the "Welcome to Grails!" message the messages "Tick" and "Tock" alternating as the browser receives events from the server.
